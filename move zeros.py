@@ -1,0 +1,23 @@
+import re
+
+text = """
+Email: user@example.com or firstname.lastname@company.co.uk.
+URL: https://www.example.com or https://subdomain.example.org/page.
+Phone Number: (123) 456-7890, 123-456-7890, or 123.456.7890.
+Credit card: 1234-5678-9012-3456 or 1234 5678 9012 3456.
+"""
+
+email_pattern = r'\b[\w\.-]+@[\w\.-]+\.\w+\b'
+url_pattern = r'https?://[^\s]+'
+phone_pattern = r'(?:\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})'
+card_pattern = r'(?:\d{4}[-\s]?){3}\d{4}'
+
+emails = re.findall(email_pattern, text)
+urls = re.findall(url_pattern, text)
+phones = re.findall(phone_pattern, text)
+cards = re.findall(card_pattern, text)
+
+print("Emails:", emails)
+print("URLs:", urls)
+print("Phone Numbers:", phones)
+print("Credit Cards:", cards)
